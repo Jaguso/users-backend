@@ -7,8 +7,8 @@ app.use(morgan('dev'));
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.send('hello world')
-});
+const userRouter = require('./routes/userRoutes');
+
+app.use('/api', userRouter);
 
 module.exports = app;
