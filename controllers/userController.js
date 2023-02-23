@@ -6,9 +6,7 @@ exports.getAllUsers = async(req, res) => {
         const users = await User.find();
         res.status(200).json({
             status: 'success',
-            data: {
-                users
-            }
+            users
         });
 
     } catch (err) {
@@ -25,10 +23,8 @@ exports.createUser = async(req, res) => {
         const newUser = await User.create(req.body);
         res.status(201).json({
             status: 'success',
-            data: {
-                user: newUser
-            }
-        })
+            user: newUser
+        });
     } catch (err) {
         res.status(404).json({
             status: 'fail',
@@ -48,9 +44,7 @@ exports.getSingleUser = async(req, res) => {
         }
         res.status(200).json({
             status: 'success',
-            data: {
-                user
-            }
+            user
         });
     } catch (err) {
         res.status(404).json({
@@ -85,9 +79,7 @@ exports.updateUser = async(req, res) => {
         // const user = await User.findByIdAndUpdate(req.params.id, req.body)
         res.status(200).json({
             status: 'success',
-            data: {
-                user
-            }
+            user
         })
     } catch (err) {
         res.status(404).json({
