@@ -28,18 +28,3 @@ const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
-
-
-// if (process.env.NODE_ENV === 'production') {
-//     const PORT = proccess.env.PORT;
-//     const server = http.createServer(app);
-
-//     server.listen(PORT, () => {
-//         console.log(`Server listening on port ${PORT} (HTTP)`);
-//     });
-// } else {
-//     const port = '8000';
-//     app.listen(port, () => {
-//         console.log('App running on port 8000')
-//     })
-// }
