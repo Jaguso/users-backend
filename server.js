@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-dotenv.config({path: './config.env'});
+
+if (process.env.NODE_ENV !== production) {
+    const dotenv = require('dotenv');
+    dotenv.config({path: './config.env'});
+}
 
 const app = require('./app');
 
@@ -17,8 +20,15 @@ const DB = process.env.DATABASE.replace(
     .catch((err) => console.log('---', err));
   
 
-const port = '8000';
 
-app.listen(port, () => {
-    console.log('App running on port 8000')
-})
+if (process.env.NODE_ENV === 'production') {
+    const https = require('https');  
+    https.createServer(app).listen(process.env.PORT, () => {
+      console.log(`Server listening on port ${process.env.PORT} (HTTPS)`);
+    });
+} else {
+    const port = '8000';
+    app.listen(port, () => {
+        console.log('App running on port 8000')
+    })
+}
